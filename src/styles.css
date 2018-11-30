@@ -1,0 +1,87 @@
+body {
+  font-family: Roboto;
+  font-size: 62.5%;
+  margin: 10px;
+}
+
+.textfield {
+  /* BASE */
+  margin-top: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 250px;
+}
+
+.textfield input {
+  border: none;
+  font-size: 1.4rem;
+  width: 250px;
+  color: #000;
+}
+
+.textfield input:focus {
+  outline: none;
+}
+
+/* LABEL */
+.textfield label {
+  user-select: none;
+}
+
+.textfield label {
+  position: absolute;
+  font-size: 1.4rem; /* same as input */
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  color: #000;
+  cursor: text;
+
+  transition: 300ms top ease-out, 300ms left ease-out, 300ms font-size ease-out;
+}
+
+.textfield input:focus + .animable label {
+  font-size: 0.8rem;
+  top: -10px;
+  left: 0;
+}
+
+.lockedLabel {
+  font-size: 0.8rem !important;
+  top: -10px !important;
+  left: 0 !important;
+}
+
+/* LINE */
+.textfield .line {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: flex;
+  width: 100%;
+  border: 1px solid #dedede;
+  margin-top: 5px;
+}
+
+.textfield input + .animable .line::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: #3d52d5;
+
+  transition: 300ms width ease-in, 0ms 300ms border-width;
+}
+
+.textfield input:focus + .animable .line::before {
+  width: 100%;
+  border-width: 1px;
+  transition: 300ms width ease-out;
+}
